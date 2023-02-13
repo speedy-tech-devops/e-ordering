@@ -1,0 +1,203 @@
+.header {
+    background-color: #fff;
+    position: sticky;
+    top: 0px;
+    z-index: 10;
+    .appName{
+        position: relative;
+    }
+    .btnBack{
+        width: 20px;
+        height: 20px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translate(0,-50%);
+    }
+    .groupText {
+        text-align: center;
+        padding: 5px;
+        h1 {
+            font-size: 26px;
+            font-family: "HelvethaicaMed";
+            line-height: 1;
+        }
+        p {
+            font-size: 23px;
+        }
+    }
+    .icon {
+        width: 20px;
+        height: 20px;
+        background-position: center;
+        background-size: contain;
+    }
+    .swichNav {
+        height: 50px;
+        border-bottom: 1px solid #16284B;
+    }
+    .navBar {
+        display: grid;
+        align-items: center;
+        grid-template-columns: auto 1fr;
+        gap: 20px;
+        height: 100%;
+        position: relative;
+        padding: 0px 15px;
+        padding-top: 5px;
+        // &::after{
+        //     content: '';
+        //     position: absolute;
+        //     right: 0;
+        //     top: 0;
+        //     background-color: #fff;
+        //     width: 48px;
+        //     height: 48px;
+        //     box-shadow: -13px 0px 6px -8px #efefef;
+        // }
+    }
+
+    .groupNav {
+        // display: flex;
+        gap: 5px;
+        grid-auto-flow: column;
+        overflow-x: hidden;
+        // scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch; /* [3] */
+        -ms-overflow-style: -ms-autohiding-scrollbar; /* [4] */ 
+        position: relative;
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+    .navItem {
+        // padding: 2px 15px;
+        border-radius: 15px;
+        font-size: 22px;
+        // white-space: nowrap;
+        line-height: 1.4;
+        text-decoration: none;
+        color: #000;
+        position: relative;
+        span{
+            // white-space: nowrap;
+            margin: 10px;
+        }
+        &:after{
+            position: absolute;
+            content: "";
+            right: 0;
+            height: 30px;
+            top: 5px;
+            width: 0.5px;
+            filter: blur(1px);
+            background-color: #16284b45;
+        }
+    }
+
+    .searchBar{
+        height: calc(100% - 10px);
+        position: relative;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        align-items: center;
+        gap: 15px;
+        padding: 0 15px;
+        margin: 0 10px;
+        background-color: rgb(225, 225, 225);
+        border-radius: 5px;
+        input{
+            font-size: 21px;
+            border: unset;
+            box-shadow: unset;
+            outline: unset;
+            background-color: unset;
+        }
+        .icon{
+            width: 15px;
+            height: 15px;
+        }
+    }
+}
+.icon_close{
+    position: absolute;
+    right: 15px;
+    line-height: 1;
+    top: 15px;
+
+}
+.group_header{
+    position: relative;
+    position: sticky;
+    top: -2px;
+    background: #fff;
+    z-index: 1;
+}
+.topbar_menu{
+    display:grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 15px;
+    font-size: 18px;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 15px;
+}
+.logo{
+display: flex;
+align-items: center;
+}
+.group_shop{
+line-height: 1;
+.name{
+    font-size: 22px;
+    letter-spacing: 0.5px;
+}
+.table{
+    font-size: 18px;
+    letter-spacing: 0.5px;
+}
+}
+.name{
+
+}
+.table{
+
+}
+.active_all_menu{
+    display: flex;
+    gap:25px;
+}
+.lang_change{
+
+}
+.form_search{
+    padding: 0 15px;
+}
+.input_group{
+    position: relative;
+    font-size: 16px;
+    input{
+        padding-left: 40px;
+        border-radius: 56px;
+        background-color: #F0F0F0;
+        border: none;
+    }
+}
+.input_group_text{
+    position: absolute;
+    left: 15px;
+    top: 10px;
+}
+.group_nav{
+    box-shadow: 0px 0.5px 0px #E5E5E5;
+    padding: 15px 0;
+    overflow: hidden;
+    padding-bottom: 0;
+}
+.lang_change{
+    line-height: 1;
+}

@@ -1,0 +1,61 @@
+@import "/public/sass/_variable";
+.dealItem {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 15px;
+    padding: 0 15px;
+}
+.dealImages {
+    img {
+        border-radius: 10px;
+    }
+}
+.group_dealitem {
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+}
+.deal_name {
+    font-size: 18px;
+    @include font-bold;
+}
+.deal_detail {
+    @include ellipsis(1);
+    color: #717171;
+    font-size: 18px;
+    line-height: 1.1;
+    flex-grow: 1;
+}
+.deal_price {
+    font-size: 22px;
+    line-height: 1;
+    span:nth-child(1){
+        color:#000;
+        @include font-bold;
+        margin-right: 5px;
+    }
+    span:nth-child(2){
+        color: #717171;
+        text-decoration: line-through;
+    }
+}
+.bottom_deal_item{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 5px;
+    
+}
+.plus {
+    position: relative;
+    // z-index: 9999;
+    text-align: center;
+    background-color: #16284B;
+    border-radius: 50px;
+    height: 29px;
+    width: 29px;
+    font-size: 20px;
+    color: #fff;
+    padding: 2px;
+    
+}

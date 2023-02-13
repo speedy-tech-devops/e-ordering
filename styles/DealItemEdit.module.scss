@@ -1,0 +1,177 @@
+@import "/public/sass/_variable";
+.dealItem {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    grid-gap: 15px;
+    gap: 15px;
+    padding: 10px 15px;
+    align-items: center;
+    background: #fff;
+    margin-top: 15px;
+}
+.dealImages {
+    text-align: center;
+    img {
+       
+        border-radius: 10px;
+    }
+}
+.group_dealitem {
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+}
+.deal_name {
+    font-size: 22px;
+    position: relative;
+    @include font-bold;
+    span.prices{
+        position: absolute;
+        right: 0;
+        top:0;
+    }
+}
+.deal_detail {
+    @include ellipsis(1);
+    color: #717171;
+    font-size: 18px;
+    flex-grow: 1;
+}
+.deal_price {
+    font-size: 22px;
+    line-height: 1;
+    span:nth-child(1){
+        color:#000;
+        @include font-bold;
+        margin-right: 5px;
+    }
+    span:nth-child(2){
+        color: #717171;
+        text-decoration: line-through;
+    }
+}
+.bottom_deal_item{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 5px;
+    
+}
+.plus {
+    text-align: center;
+    background-color: #16284B;
+    border-radius: 50px;
+    height: 29px;
+    width: 29px;
+    font-size: 20px;
+    color: #fff;
+    padding: 2px;
+}
+
+.group_qty{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+%btu_plus_mins { 
+    flex: 1;
+    background: #16284B;
+    color: #fff;
+    text-align: center;
+    width: 47px;
+    border-radius: 50px;
+    height: 31px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+.min_qty{
+    @extend %btu_plus_mins
+}
+.qty{
+    font-size: 22px;
+    line-height: 1;
+    flex: 1.3;
+    text-align: center;
+}
+.max_qty{
+    @extend %btu_plus_mins
+}
+.group_addtocart{
+    padding: 10px 0;
+    position: relative;
+    flex: 1;
+}
+.btn_addtocart{
+    padding: 10px 15px;
+    text-align: center;
+    background: #16284B;
+    color: #fff;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+}
+.disabled{
+    background: #717171 !important;
+    pointer-events: none;
+}
+
+
+.group_button_bottom{
+    display: flex;
+    font-size: 22px;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    gap: 8px 30px;
+    background: #fff;
+    padding: 0px 15px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    border-top: 1px solid #ECECEC;
+}
+.group_total{
+    text-align: center;
+}
+.titletotal{
+ line-height: 1;
+ @include font-regular;
+}
+.price{
+    color: #FB2A10;
+    @include font-bold;
+    font-size: 26px;
+    line-height: 1.2;
+}
+.rowfisrt{
+    @include ellipsis(1);
+    font-size: 18px;
+    flex-grow: 1;
+    width: 70%;
+}
+.group_vat{
+    gap: 0;
+    width: 100%;
+    .total_number_bill{
+        padding: 5px 0;
+        margin-bottom: 0px;
+    }
+}
+
+.group_total{
+    text-align: center;
+}
+.group_vat{
+    gap: 0;
+    width: 100%;
+    .total_number_bill{
+        padding: 5px 0;
+        margin-bottom: 0px;
+    }
+}

@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+      "baseUrl": ".",
+      "paths": {
+        "@/components/*": ["components/*"],
+        "@/sass/*": ["public/sass/*"],
+        "@/hook/*": ["hook/*"],
+        "@/global/*": ["public/*"],
+        "@/styles/*": ["styles/*"],
+        "@/layouts/*": ["layout/*"],
+        "@/locales/*": ["locales/*"],
+        "@/context/*": ["context/*"],
+        "@/services/*": ["services/*"],
+        "@/adobe/*": ["adobe/*"],
+      }
+  }
+}

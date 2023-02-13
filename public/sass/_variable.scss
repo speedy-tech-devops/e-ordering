@@ -1,0 +1,205 @@
+// Color ALL
+
+$font-color-text: #5a5a5a;
+$font-color-skinblack-text: #fff;
+$bg-light: #ffffff;
+$bg-dark: #000000;
+$bg-light-grey: #ffffff;
+$dark: #000000 !default;
+$gray-base: gray !default;
+$gray-light: #77777a !default;
+
+$brand-primary: darken(#000, 6.5%) !default; // #black
+$brand-success: #5cb85c !default;
+$brand-info: #5bc0de !default;
+$brand-warning: #f0ad4e !default;
+$brand-danger: #d9534f !default;
+$body-bg: #fff !default;
+$text-color: $gray-light !default;
+$link-color: $brand-primary !default;
+$link-hover-color: darken($link-color, 15%) !default;
+$link-hover-decoration: underline !default;
+//## Define common padding and border radius sizes and more. Values based on 14px text and 1.428 line-height (~20px to start).
+$line-height-large: 1.3333333 !default; // extra decimals for Win 8.1 Chrome
+$line-height-small: 1.5 !default;
+$header-transparent: cc;
+%background-header {
+  background-color: $bg-light;
+}
+
+$line-height: 1;
+$margin-none: 0px;
+$padding-none: 0px;
+$width-height-full: 100%;
+$moblie-width: 767px;
+$tablet-width: 768px;
+$tablet-width-landscape: 992px;
+$laptop-width: 1024px;
+$notebook-width: 1440px;
+$desktop-width: 1920px;
+
+//<!----------- Fonts ALL  -------------->
+$font-root: 62.5%;
+$font-content: 1.4em;
+$font-nav: 1.8em;
+$font-subheader: 2.4em;
+$font-header: 6em;
+
+$path: "/fonts";
+
+%font {
+  font-family: "db_heaventmed", "db_fongnam_xbold" !important;
+}
+%font_light {
+  font-family: "db_heaventlight" !important;
+}
+%font_reg {
+  font-family: "db_heaventreguler" !important;
+}
+
+@mixin font-regular {
+  @extend %font_reg;
+  font-weight: 300;
+}
+
+@mixin font-medium {
+  @extend %font;
+  font-weight: 500;
+}
+
+@mixin font-bold {
+  @extend %font;
+}
+@font-face {
+  font-family: "db_heaventlight";
+  src: url("#{$path}/DB_Heavent_Li.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "db_heaventreguler";
+  src: url("#{$path}/DB_Heavent_Reg.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "db_heaventmed";
+  src: url("#{$path}/DB_Heavent_Med.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "db_heaventmed-bold";
+  src: url("#{$path}/db_helvethaica_x_bd_v3.2-webfont.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "db_fongnam_xbold";
+  src: url("#{$path}/DB_FongNam_X.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "HKGrotesk-Medium";
+  src: url("#{$path}/HKGrotesk-Medium.otf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "HKGrotesk-Bold";
+  src: url("#{$path}/HKGrotesk-Bold.otf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "DTLAlbertinaT";
+  src: url("#{$path}/DTL-Albertina-T-Regular.otf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "remagg-cz";
+  src: url("#{$path}/remagg-cz.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "icomoon";
+  src: url("#{$path}/icomoon.eot?pb8b23");
+  src: url("#{$path}/icomoon.eot?pb8b23#iefix") format("embedded-opentype"),
+    url("#{$path}/icomoon.ttf?pb8b23") format("truetype"), url("#{$path}/icomoon.woff?pb8b23") format("woff"),
+    url("#{$path}/icomoon.svg?pb8b23#icomoon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+.text-black{
+  color: #000;
+}
+//<!----------- Animation ALL  -------------->
+
+@mixin animation-delay($time) {
+    -webkit-transition: all $time + s ease-in-out;
+    -moz-transition: all $time + s ease-in-out;
+    -o-transition: all $time + s ease-in-out;
+    transition: all $time + s ease-in-out;
+  }
+  
+  //<!-----------  -------------->
+  @mixin ellipsis($value) {
+    display: -webkit-box;
+    -webkit-line-clamp: $value;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  //<!-----------  -------------->
+  @mixin remove-btn {
+    background-color: unset;
+    border: unset;
+    outline: none !important;
+  }
+  
+  // <!---------- Media ------------------------>
+  @mixin moblie {
+    @media (max-width: #{$moblie-width}) {
+      @content;
+    }
+  }
+  
+  @mixin tablet {
+    @media (min-width: #{$tablet-width}) and (max-width: #{$tablet-width-landscape - 1px}) {
+      @content;
+    }
+  }
+  
+  @mixin laptop {
+    @media (min-width: #{$tablet-width-landscape}) and (max-width: #{$laptop-width}) {
+      @content;
+    }
+  }
+  
+  @mixin notebook {
+    @media (max-width: #{$notebook-width}) {
+      @content;
+    }
+  }
+  
+  @mixin desktop {
+    @media (max-width: #{$desktop-width}) {
+      @content;
+    }
+  }
+  @mixin overdesktop {
+    @media (min-width: #{$desktop-width+1}) {
+      @content;
+    }
+  }
+
+
+  .btnGG{
+    margin-top: 100px;
+  }
