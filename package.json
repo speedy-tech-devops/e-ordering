@@ -1,0 +1,44 @@
+{
+  "name": "dashboard",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "cross-env NEXT_PUBLIC_API=https://d-api.speedy-tech.co next dev ",
+    "build": "cross-env NEXT_PUBLIC_API=https://d-api.speedy-tech.co next build",
+    "start": "cross-env NEXT_PUBLIC_API=https://d-api.speedy-tech.co next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@next/font": "13.1.2",
+    "axios": "^1.2.1",
+    "bootstrap": "^5.2.3",
+    "cross-env": "^7.0.3",
+    "eslint": "8.31.0",
+    "eslint-config-next": "13.1.2",
+    "framer-motion": "^8.5.4",
+    "js-cookie": "^3.0.1",
+    "moment": "^2.29.4",
+    "next": "13.1.2",
+    "next-redux-wrapper": "^8.1.0",
+    "next-seo": "^5.15.0",
+    "react": "18.2.0",
+    "react-bootstrap": "^2.7.0",
+    "react-dom": "18.2.0",
+    "react-infinite-scroll-component": "^6.1.0",
+    "react-qr-code": "^2.0.11",
+    "react-redux": "^8.0.5",
+    "react-scroll": "^1.8.9",
+    "react-slick": "^0.29.0",
+    "react-ui-scrollspy": "^2.3.0",
+    "recharts": "^2.3.2",
+    "redux": "^4.2.0",
+    "redux-thunk": "^2.4.2",
+    "sass": "^1.57.1",
+    "socket.io": "^4.6.0",
+    "socket.io-client": "^4.6.0",
+    "sweetalert2": "^11.7.1"
+  },
+  "devDependencies": {
+    "sass": "^1.57.1"
+  }
+}
