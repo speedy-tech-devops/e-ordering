@@ -182,7 +182,7 @@ const Header = (props) => {
                                 <p className="subtitle_text">{t.EZ1007}</p>
                         </div>
                         <div className="group_btn_confirm">
-                                <div className="btn btn_false" onClick={()=> data.setShowConfirm(false)}>ยกเลิก</div>
+                                <div className="btn btn_false" onClick={()=> data.setShowConfirm(false)}>{t.EZ3010}</div>
                                 <div className="btn btn_true" onClick={() => {
                                     data.setShowConfirm(false)
                                     Swal.fire({
@@ -195,7 +195,7 @@ const Header = (props) => {
                                         /* Read more about isConfirmed, isDenied below */
                                         router.push('/')
                                     })
-                                }}>ยืนยัน</div>
+                                }}>{t.EZ3011}</div>
                         </div>
                         </div>
                 </Modal.Body>
