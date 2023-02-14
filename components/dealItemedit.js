@@ -71,15 +71,23 @@ const DealItemEdit = (props) => {
         const sum = price.options_detail.reduce((accumulator, object) => {
             return accumulator + object.price;
         }, 0);
+        
         let remove = dataContext.transitions.products.splice(index, 1);
+        const qtys = remove.reduce((accumulator, object) => {
+            return accumulator + object.qty;
+        }, 0);
+        console.log(qtys)
         dataContext.setTransitions((prev) => ({
             customer : {
                 ...prev.customer,
+                total : qtys,
                 priceTotal :prev.customer.priceTotal - (dealItem.order.sale_price != 0 ? ((dealItem.order.sale_price + sum) * dealItem.qty)  :  ((dealItem.order.price + sum) * dealItem.qty))
             },
             products : dataContext.transitions.products
         }))
+        
         dataContext.setLoading(false)
+        setShowReject(false)
     }
     return (
         <>
