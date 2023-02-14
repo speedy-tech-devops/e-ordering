@@ -90,6 +90,13 @@ const Pages = (props) => {
             setState({ isLoading: false });
           });
     },[]);
+    useEffect(()=>{
+        if(!dataContext.emp){
+          var body = document.body;
+          body.classList.remove("lockPage");
+        }
+        
+      },[dataContext.emp])
     return (
         <div className={props.isDetail == true ? 'contentArea hidden' : 'contentArea'}>
             {/* {state.isLoading ? Spinner() : ''} */}

@@ -33,45 +33,44 @@ const Noti = (props) => {
 
                     <div className='AccordionCustom'>
                        <div className='optionItem '>
-                        <br/>
-                            <div className="form-check mb-3" onClick={()=> {
+                            <div className="form-check" style={{borderBottom : "1px solid #dee2e6"}} onClick={()=> {
                                 setEmp(false)
                                 setShowConfirm(true)
                                 }}>
                                 {/* <input className={"form-check-input"+" check_"} type="checkbox"  /> */}
-                                <label className="form-check-label" htmlFor={"check_"}>
+                                <label className="form-check-label" style={{padding: "15px 0" }} htmlFor={"check_"}>
                                     <span>เช็ดบิล</span>
                                 </label>
                             </div>
-                            <div className="form-check mb-3" onClick={()=> {
+                            <div className="form-check" style={{ borderBottom : "1px solid #dee2e6"}} onClick={()=> {
                                 setEmp(false)
                                 setShowConfirm(true)
                                 }}>
                                 {/* <input className={"form-check-input"+" check_"} type="checkbox"  /> */}
-                                <label className="form-check-label" htmlFor={"check_"}>
+                                <label className="form-check-label" style={{padding: "15px 0" }} htmlFor={"check_"}>
                                     <span>เติมน้ำซุป</span>
                                 </label>
                             </div>
-                            <div className="form-check mb-3" onClick={()=> {
+                            <div className="form-check" style={{ borderBottom : "1px solid #dee2e6"}} onClick={()=> {
                                 setEmp(false)
                                 setShowConfirm(true)
                                 }}>
                                 {/* <input className={"form-check-input"+" check_"} type="checkbox"  /> */}
-                                <label className="form-check-label" htmlFor={"check_"}>
+                                <label className="form-check-label" style={{padding: "15px 0"}} htmlFor={"check_"}>
                                     <span>ขอเครื่องปรุง</span>
                                 </label>
                             </div>
-                            <div className="form-check mb-3" onClick={()=> {
+                            <div className="form-check" style={{borderBottom : "1px solid #dee2e6"}} onClick={()=> {
                                 setEmp(false)
                                 setShowConfirm(true)
                                 }}>
                                 {/* <input className={"form-check-input"+" check_"} type="checkbox"  /> */}
-                                <label className="form-check-label" htmlFor={"check_"}>
+                                <label className="form-check-label" style={{padding: "15px 0" }} htmlFor={"check_"}>
                                     <span>เติมเครื่องดื่ม</span>
                                 </label>
                             </div>
-                            {/* <div className="form-check mb-3">
-                                <label className="form-check-label" htmlFor={"check_"}>
+                            {/* <div className="form-check" style={{padding: "15px 0" , borderBottom : "1px solid #dee2e6"}}>
+                                <label className="form-check-label" style={{padding: "15px 0" , borderBottom : "1px solid #dee2e6"}} htmlFor={"check_"}>
                                     <span>อื่นๆ</span>
                                 </label>
                             </div> */}

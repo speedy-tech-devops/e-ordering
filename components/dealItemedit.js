@@ -12,6 +12,7 @@ const DealItemEdit = (props) => {
     const { locale } = router
     const t = locale === "en" ? en : th
     const [showReject,setShowReject] = useState(false)
+    const [nameReject,setnameReject] = useState(false)
     const[state,setState] = useState({
         loading : false
     })
@@ -31,6 +32,7 @@ const DealItemEdit = (props) => {
         }else{
             
             setShowReject(true)
+            setnameReject(props.dealItem.order?.name[locale] ? props.dealItem.order?.name[locale] : props.dealItem.order?.name["th"])
             // Swal.fire({
             //     title: 'ยกเลิก!',
             //     text: 'คุณต้องการยกเลิก......ใช่ไหม?',
@@ -84,7 +86,7 @@ const DealItemEdit = (props) => {
                 <Image src={props.dealItem.order?.image_url ? props.dealItem.order?.image_url : "/images/blur.png"}  alt={props.dealItem.order?.image_url} width={40} height={40} layout={'responsive'} style={{objectFit:"cover"}}></Image>
             </div>
             <div className={style.group_dealitem}>
-                <div className={style.deal_name}><span className={style.rowfisrt}>{props.dealItem.order.name[locale]}</span><span className={style.prices}>฿ {(props.dealItem.order.sale_price != 0 ? props.dealItem.order.sale_price.toLocaleString('en-US') :  (props.dealItem.order.price) + props.dealItem.sumTotal).toLocaleString('en-US')} x {count}</span></div>
+                <div className={style.deal_name}><span className={style.rowfisrt}>{props.dealItem.order?.name[locale] ? props.dealItem.order?.name[locale] : props.dealItem.order?.name["th"]}</span><span className={style.prices}>฿ {(props.dealItem.order.sale_price != 0 ? (props.dealItem.order.sale_price + props.dealItem.sumTotal).toLocaleString('en-US') :  (props.dealItem.order.price) + props.dealItem.sumTotal).toLocaleString('en-US')} x {count}</span></div>
                 <div className={style.deal_detail}>
                     {props.dealItem.note}
                     
@@ -93,7 +95,7 @@ const DealItemEdit = (props) => {
                          return  (
                             <>
                             {
-                                addOn.name[locale]
+                                addOn?.name[locale] ? addOn?.name[locale] : addOn.name["th"]
                             }
                             {
                                 props.dealItem.options_detail.length != i+1 && ", "
@@ -126,7 +128,7 @@ const DealItemEdit = (props) => {
                     <div className='group-modal'>
                        <div className="title_name_modal">
                             <div className="title_text">ยกเลิก</div>
-                            <p className="subtitle_text">คุณต้องการยกเลิก......ใช่ไหม?</p>
+                            <p className="subtitle_text">คุณต้องการยกเลิก <b >{nameReject}</b> ใช่ไหม?</p>
                        </div>
                        <div className="group_btn_confirm">
                             <div className="btn btn_false" onClick={() => {setShowReject(false)}}>ยกเลิก</div>

@@ -45,10 +45,10 @@ const Cart = (props) => {
                 router.push('/order')
                 Swal.fire({
                     icon: 'success',
-                    title: 'Your work has been saved',
+                    title: 'ส่งรายการอาหารเรียบร้อยแล้ว',
                     showConfirmButton: false,
                     timer: 1000,
-                    confirmButtonText: 'Close',
+                    confirmButtonText: 'ปิด',
                 }).then((result) => {
                     /* Read more about isConfirmed, isDenied below */
                     

@@ -22,8 +22,8 @@ const DealItem = (props) => {
                 <Image src={'/images/item1.png'} blurDataURL={"/images/item1.png"} width={98} height={98} alt={props.data.name[locale]}></Image>
             </div>
             <div className={style.group_dealitem}>
-                <div className={style.deal_name}>{props.data.name[locale]}</div>
-                <div className={style.deal_detail}>{props.data.description[locale]}</div>
+                <div className={style.deal_name}>{props.data?.name[locale]  ? props.data?.name[locale] : props.data.name["th"]}</div>
+                <div className={style.deal_detail}>{props.data?.description[locale]  ? props.data?.description[locale] : props.data.description["th"]}</div>
                 <div className={style.bottom_deal_item}>
                     <div className={style.deal_price}>
                         <span>฿{props.data.sale_price}</span>

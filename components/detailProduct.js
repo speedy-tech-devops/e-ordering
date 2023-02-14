@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useTransition } from 'react'
 import style from '@/styles/detailProduct.module.scss'
 import Image from 'next/legacy/image'
 import Accordion from 'react-bootstrap/Accordion';
@@ -22,16 +22,22 @@ const DetailProduct = (props) => {
     const [enabled, setEnabled] = useState(true)
     const plusFunc = () => {
         let priceItem = dataItem?.sale_price != 0 && dataItem?.sale_price ? dataItem?.sale_price : dataItem?.price
+        const sum = [...options_detail].reduce((accumulator, object) => {
+            return accumulator + object.price;
+        }, 0);
         setCount(count + 1);
-        setTotalPrice(priceItem * (count + 1))
+        setTotalPrice((priceItem + sum) * (count + 1))
     };
     const minusFunc = () => {
         let priceItem = dataItem?.sale_price != 0 && dataItem?.sale_price ? dataItem?.sale_price : dataItem?.price
+        const sum = [...options_detail].reduce((accumulator, object) => {
+            return accumulator + object.price;
+        }, 0);
         if (count === 1) {
             return;
         }
         setCount(count - 1);
-        setTotalPrice(priceItem * (count - 1))
+        setTotalPrice((priceItem + sum) * (count - 1))
     };
     const onChangeAddtoOrder = (e,id,limit,data,cho_id,choice_limit) => {
         const {name,value,checked,type} = e.target
@@ -52,7 +58,7 @@ const DetailProduct = (props) => {
             if(checked && checkedCheckss.length <= limit){
                 setOptions((prev) => [...prev,value])
                 setOptionsDetail((prev) => [...prev,{ch_id:cho_id,...data,min : choice_limit}])
-                setTotalPrice((prev) => prev + data.price)
+                setTotalPrice((prev) => prev + (data.price * count))
                 // let checkSelectOptions = [...options_detail,{ch_id:cho_id,...data,min : choice_limit}].map(e => e.ch_id)
                 // const counts = {};
                 // checkSelectOptions.forEach(function (x) { counts[x] = (counts[x] || 0) + 1; });
@@ -76,7 +82,7 @@ const DetailProduct = (props) => {
                 options_detail.splice(indexs, 1);
                 setOptions(options)
                 setOptionsDetail((prev) => [...prev])
-                setTotalPrice((prev) => prev - data.price)
+                setTotalPrice((prev) => prev - (data.price * count))
                 // let checkSelectOptions = options_detail.map(e => e.ch_id)
                 // const counts = {};
                 // checkSelectOptions.forEach(function (x) { counts[x] = (counts[x] || 0) + 1; });
@@ -94,14 +100,14 @@ const DetailProduct = (props) => {
             if(indexs < 0){
                 setOptions((prev) => [...prev,value])
                 setOptionsDetail((prev) => [...prev,{ch_id:cho_id,...data,min : choice_limit}])
-                setTotalPrice((prev) => prev + data.price)
+                setTotalPrice((prev) => prev + (data.price * count))
             }else{
                 options_detail.splice(indexs, 1);
                 setOptionsDetail((prev) => [...options_detail,{ch_id:cho_id,...data,min : choice_limit}])
                 const sum = [...options_detail,{ch_id:cho_id,...data,min : choice_limit}].reduce((accumulator, object) => {
                     return accumulator + object.price;
                 }, 0);
-                setTotalPrice((dataItem?.sale_price != 0 && dataItem?.sale_price ? dataItem?.sale_price : dataItem?.price) + sum)
+                setTotalPrice(((dataItem?.sale_price != 0 && dataItem?.sale_price ? dataItem?.sale_price : dataItem?.price) + sum) * count)
                 
             }
             
@@ -169,7 +175,7 @@ const DetailProduct = (props) => {
                 className={style.DetailProduct}
             >
                 <div className={style.title}>
-                    <h1>{dataItem.name[locale]}</h1>
+                    <h1>{dataItem?.name[locale] ? dataItem.name[locale] : dataItem.name["th"]}</h1>
                     <div className={style.btnClose + ' icon_close'} onClick={(e) => props.setDetail(false)} />
                 </div>
                 <div className={style.scrollDtail}>
@@ -178,31 +184,31 @@ const DetailProduct = (props) => {
                     </div>
                     <div className={style.nameProduct}>
                         <div className={style.row}>
-                            <h1>{dataItem.name[locale]}</h1>
+                            <h1>{dataItem?.name[locale] ? dataItem.name[locale] : dataItem.name["th"]}</h1>
                             <h1 style={{ width: "100px",textAlign:'right' }}>{dataItem?.sale_price != 0 && dataItem?.sale_price ? <>
                                 <span>
-                                  {dataItem.sale_price} ฿
+                                  {dataItem.sale_price.toLocaleString('en-US')} ฿
                                 </span>
                                 <span  className='discount-price'>
                                   {
-                                     dataItem.price
+                                     dataItem.price.toLocaleString('en-US')
                                   } ฿
 
                                 </span>
-                                </> : dataItem.price + " ฿"}</h1>
+                                </> : dataItem.price.toLocaleString('en-US') + " ฿"}</h1>
                         </div>
                         <div className={style.row}>
-                            <p>{dataItem.description[locale]}</p>
+                            <p>{dataItem?.description[locale] ? dataItem.description[locale] : dataItem.description["th"]}</p>
                         </div>
                     </div>
 
-                    <Accordion className='AccordionCustom' defaultActiveKey={[0, 1]} alwaysOpen>
+                    <Accordion className='AccordionCustom' defaultActiveKey={[0, 1, 2]} alwaysOpen>
                         {
                             dataItem.attributes.map((attr, i) => {
                                 return (
                                     <Accordion.Item eventKey={i}>
                                         <Accordion.Header>
-                                            <p className={style.subMenu}> {attr.attribute.choice_min > 0  && <span style={{color: "red",fontSize : '20px'}}>* </span>}{attr.attribute.name[locale]} <span style={{display : "block"}}>Select at least {attr.attribute.choice_min} item</span></p>
+                                            <p className={style.subMenu}> {attr.attribute.choice_min > 0  && <span style={{color: "red",fontSize : '20px'}}>* </span>}{attr?.attribute?.name[locale] ? attr.attribute.name[locale] : attr.attribute.name["th"]} <br/> {attr.attribute.choice_min != 0 && <span style={{display : "inline-block"}}>{t.Selectatleast} {attr.attribute.choice_min} {t.Item}</span>} {attr.attribute.choice_limit >= 0 && <span style={{display : "inline-block"}}>{t.Selectatleastmin} {attr.attribute.choice_limit} {t.Item}</span>}</p>
                                         </Accordion.Header>
                                         <Accordion.Body>
                                             {
@@ -215,7 +221,7 @@ const DetailProduct = (props) => {
                                                                     <div className="form-check mb-3">
                                                                         <input className="form-check-input" type="radio" name={attr.attribute._id} id={"radio_"+i} value={opt._id} onClick={(e) => {onChangeAddtoOrder(e,"check_" + attr.attribute._id,attr.attribute.choice_limit,opt,attr.attribute._id,attr.attribute.choice_min)}} />
                                                                         <label className="form-check-label" htmlFor={"radio_"+i}>
-                                                                            <span>{opt.name[locale]}</span>
+                                                                            <span>{opt?.name[locale] ? opt?.name[locale] : opt.name["th"]}</span>
                                                                             <span>{opt.price ? "+"+opt.price +" ฿" : ''}</span>
                                                                         </label>
                                                                     </div>
@@ -233,7 +239,7 @@ const DetailProduct = (props) => {
                                                                     <div className="form-check mb-3">
                                                                         <input className={"form-check-input"+" check_" + attr.attribute._id} type="checkbox" id={"check_" + opt._id} value={opt._id} onClick={(e) => {onChangeAddtoOrder(e,"check_" + attr.attribute._id,attr.attribute.choice_limit,opt,attr.attribute._id,attr.attribute.choice_min)}} />
                                                                         <label className="form-check-label" htmlFor={"check_" + opt._id}>
-                                                                            <span>{opt.name[locale]}</span>
+                                                                            <span>{opt?.name[locale]  ? opt.name[locale] : opt.name["th"]}</span>
                                                                             <span>{opt.price ? "+"+opt.price +" ฿" : ''} </span>
                                                                         </label>
                                                                     </div>

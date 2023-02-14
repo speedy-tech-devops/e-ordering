@@ -73,6 +73,7 @@ const Pagemini = (props) =>{
           Router.events.on('routeChangeComplete', () => {
             routeChange()
             setState({ isLoading: false });
+           
             var body = document.body;
             body.classList.remove("lockPage");
           });

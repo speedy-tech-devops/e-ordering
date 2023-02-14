@@ -37,7 +37,7 @@
     }
 }
 .deal_detail {
-    @include ellipsis(2);
+    @include ellipsis(1);
     color: #717171;
     font-size: 18px;
     padding: 0px 20px 0 0px;

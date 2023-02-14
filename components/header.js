@@ -21,11 +21,11 @@ const Header = (props) => {
     const t = locale === "en" ? en : th
     const settings = {
         className: "slider variable-width",
-        dots: true,
+        dots: false,
         infinite: false,
         centerMode: false,
         slidesToShow: 1,
-        slidesToScroll: 1,
+        slidesToScroll: 4,
         variableWidth: true,
         afterChange: () => {
             data.setSlideIndex((prev) => (prev + 1))
@@ -38,11 +38,15 @@ const Header = (props) => {
         let array = []
         let dataSearch = data.products.map((e) => e.menus)
         let datas = array.concat(...dataSearch).filter((item) => {
-            return item.name[locale].toLowerCase().match(value.toLowerCase())
+            if(item.name[locale] != null){
+                return item.name[locale].toLowerCase().match(value.toLowerCase())
+            }else{
+                return item.name["th"].toLowerCase().match(value.toLowerCase())
+            }
+            
         })
         props.setSearch(value)
         data.setDataSearch(datas)
-
     }
     const backBtn = (e) => {
         setSearchBar(false)
@@ -52,33 +56,16 @@ const Header = (props) => {
         // refs.current[0].current.focus()
         // refs.current?.scrollIntoView({ block: "start", behavior: "smooth" });
         // dataContext.setHeightCateory()
-        sliderRef.current.slickGoTo(data.heightCateory)
+        
+        sliderRef?.current?.slickGoTo(data.heightCateory)
         scrollSpy.update();
         return () => {
             Events.scrollEvent.remove('begin');
             Events.scrollEvent.remove('end');
         }
+        
       }, [data.heightCateory]);
-    //   const createWheelStopListener = useCallback((element, callback, timeout) => {
-    //     const { pageYOffset, scrollY } = window;
-    //     var handle = null;
-    //     var onScroll = function() {
-    //         if (handle) {
-    //             clearTimeout(handle);
-    //         }
-    //         handle = setTimeout(callback, timeout || 200); // default 200 ms
-    //     };
-    //     window.addEventListener('wheel', onScroll);
-    //     return function() {
-    //       window.removeEventListener('wheel', onScroll);
-    //     };
-    // }, []);
-    //   useEffect(() => {
-    //     createWheelStopListener(window, function() {
-    //         console.log(data.updateCount)
-    //         // sliderRef.slickGoTo(data.heightCateory)
-    //   })
-    //   }, []);
+
     const handleRoute = (locale) => router.push(`${locale}${router.asPath}`, `${locale}${router.asPath}`, { locale: false })
     return (
         <>
@@ -88,19 +75,22 @@ const Header = (props) => {
                         <Image src={ !data?.user?.logo_image ? '/images/logo.png' : data?.user?.logo_image} width={36} height={36} alt="logo"></Image>
                     </div>
                     <div className={style.group_shop}>
-                        <div className={style.name}>{data?.user?.shop_name[locale]}</div>
-                        <div className={style.table}><span>{data?.user?.table_name[locale]}</span></div>
+                        <div className={style.name}>{data?.user?.shop_name[locale] ? data?.user?.shop_name[locale] : data?.user?.shop_name['th']}</div>
+                        <div className={style.table}><span>{data?.user?.table_name[locale] ? data?.user?.table_name[locale] : data?.user?.table_name["th"]}</span></div>
                     </div>
                     <div className={style.active_all_menu}>
                         <div className={style.lang_change}>
-                            <img src="/images/ring-bell.png" width={20} onClick={() => {data.setEmp(true)}}></img>
+                            <img src="/images/Ring.svg" width={25} onClick={() => {
+                                data.setEmp(true)
+                                var body = document.body;
+                                body.classList.add("lockPage")}}></img>
                         </div>
                         <div className={style.lang_change}>
-                        <img src="/images/Vector.png" width={20}  onClick={() => {router.push('/order')}}></img>
+                        <img src="/images/History.svg" width={25}  onClick={() => {router.push('/order')}}></img>
                         </div>
                         {
                             router.locale == "th" ? 
-                            <div className={style.lang_change} onClick={() => handleRoute("en")}>
+                            <div className={style.lang_change} style={{position : "relative" , top : "2px"}} onClick={() => handleRoute("en")}>
                                 <img src="/images/thai.png" width={20}></img>
                             </div> 
                             : 
@@ -120,7 +110,7 @@ const Header = (props) => {
                         <p>{data?.user?.branch_name[locale] +" - "+ data?.user?.table_name[locale]}</p>
                     </div>
                 </div> */}
-                <div className={style.swichNav}>
+                {data?.products.length != 0 && <div className={style.swichNav}>
                     {isSearchBar == true ?
                         <div className={style.searchBar}>
                             <div className={style.icon + ' icon_search'} />
@@ -140,9 +130,9 @@ const Header = (props) => {
                                         return <Link className={style.navItem + ` ${data.heightCateory == i && " active"}`} to={`sec_${i}`} spy={true}
                                         smooth={true}
                                         hashSpy={true}
-                                        offset={-120}
+                                        offset={0}
                                         duration={50}
-                                        isDynamic={true}
+                                        isDynamic={false}
                                         ignoreCancelEvents={false}
                                          onSetActive={(e) => {
                                             data.scrolLWithUseRef(i,e)
@@ -150,9 +140,9 @@ const Header = (props) => {
                                           onClick={(e) => {
                                             sliderRef.current.slickGoTo(i)
                                         }} >
-                                        <span>{item.category_name[locale]}</span>
+                                        <span>{item?.category_name[locale] ? item?.category_name[locale] : item?.category_name["th"]}</span>
                                     </Link>
-                                    })
+                                    }) 
                                 }
                                 {/* {
                                     data?.products && data.products.map((item,i) =>{
@@ -185,7 +175,7 @@ const Header = (props) => {
                             </div>
                         </div>
                     }
-                </div>
+                </div>}
             </header>
             <Modal key={1} show={data.showConfirm} onHide={()=> data.setShowConfirm(false)} size="sm"
                     aria-labelledby="contained-modal-title-vcenter"
@@ -208,7 +198,7 @@ const Header = (props) => {
                                         confirmButtonText: 'Close',
                                     }).then((result) => {
                                         /* Read more about isConfirmed, isDenied below */
-                                        router.push('/order')
+                                        router.push('/')
                                     })
                                 }}>ยืนยัน</div>
                         </div>

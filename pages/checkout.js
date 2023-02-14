@@ -84,12 +84,15 @@ const Checkout = (props) => {
                         <div className={style.text_total}>VAT {history.vat_rate}% {!dataContext?.user?.configs?.is_vat_exclude ? t.excluding : t.including}</div>
                         <div className={style.text_total}>฿ {parseFloat(history.vat_amount).toLocaleString(undefined,{'minimumFractionDigits':2,'maximumFractionDigits':2})}</div>
                     </div>}
+                    {<div className={[style.total_number_bill,style.group_total].join(' ')}>
+                        <div className={style.text_total}>รวมทั้งหมด</div>
+                        <div className={[style.text_total , style.price].join(' ')} style={{fontSize:"24px"}}>฿ {parseFloat(history.totol_amount).toLocaleString('en-US')}</div>
+                    </div>}
                </div>
-               <div className={style.group_total}>
+               {/* <div className={style.group_total}>
                 <div className={style.titletotal}>รวมทั้งหมด</div>
                 <div className={style.price}>฿ {parseFloat(history.totol_amount).toLocaleString('en-US')}</div>
-                {/* <span style={{fontSize :"12px" , lineHeight : "1"}}>ยังไม่รวม VAT,Service Chage</span> */}
-            </div>
+            </div> */}
            </div>
            
             {/* <div className={style.group_button_bottom}>
