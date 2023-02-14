@@ -53,10 +53,6 @@ const Header = (props) => {
         props.setSearch('')
     }
     useEffect(() => {
-        // refs.current[0].current.focus()
-        // refs.current?.scrollIntoView({ block: "start", behavior: "smooth" });
-        // dataContext.setHeightCateory()
-        
         sliderRef?.current?.slickGoTo(data.heightCateory)
         scrollSpy.update();
         return () => {
@@ -65,7 +61,6 @@ const Header = (props) => {
         }
         
       }, [data.heightCateory]);
-
     const handleRoute = (locale) => router.push(`${locale}${router.asPath}`, `${locale}${router.asPath}`, { locale: false })
     return (
         <>

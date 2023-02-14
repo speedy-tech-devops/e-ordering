@@ -4,7 +4,7 @@ import Router, { useRouter } from 'next/router'
 import Image from 'next/legacy/image';
 import en from '@/locales/en'
 import th from '@/locales/th'
-const Home = (props) => {
+const QRCode = (props) => {
     const router = useRouter()
     const { locale } = router
     const t = locale === "en" ? en : th
@@ -73,4 +73,4 @@ const Home = (props) => {
         </div>
     )
 }
-export default Home
+export default QRCode
