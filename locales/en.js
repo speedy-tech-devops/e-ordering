@@ -11,6 +11,10 @@ export default {
     "EZ1002" :"My Order",
     "EZ1003" :"Item",
     "EZ1004" :"Search for Menu",
+    "EZ1005" :"Call the staff",
+    "EZ1007" :"Do you want to call the staff?",
+    "EZ1008" :"Call the staff neatly",
+    "EZ1009" :"The staff are doing as he requested.",
     "EZ2001" :"Select at least",
     "EZ2002" :"Maximum",
     "EZ2003" :"Additional Info",
@@ -50,5 +54,7 @@ export default {
     "EZ5003" :"Prices",
     "EZ5004" :"Summary",
     "EZ5005" :"VAT ",
+    "EZ5006" :"Total",
+    "EZ6001" :"VAT ",
     "EZ5006" :"Total",
   } 

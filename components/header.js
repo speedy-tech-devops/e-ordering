@@ -178,8 +178,8 @@ const Header = (props) => {
                     <Modal.Body>
                         <div className='group-modal'>
                         <div className="title_name_modal">
-                                <div className="title_text">เรียกพนักงาน</div>
-                                <p className="subtitle_text">คุณต้องการเรียกพนักงานหรือไม่</p>
+                                <div className="title_text">{t.EZ1005}</div>
+                                <p className="subtitle_text">{t.EZ1007}</p>
                         </div>
                         <div className="group_btn_confirm">
                                 <div className="btn btn_false" onClick={()=> data.setShowConfirm(false)}>ยกเลิก</div>
@@ -187,8 +187,8 @@ const Header = (props) => {
                                     data.setShowConfirm(false)
                                     Swal.fire({
                                         icon: 'success',
-                                        title: 'เรียกพนักงานเรียบร้อย',
-                                        text: 'พนักงานกำลังกำเนินการตามที่ท่านขอ',
+                                        title: t.EZ1008,
+                                        text: t.EZ1009,
                                         showConfirmButton: false,
                                         confirmButtonText: 'Close',
                                     }).then((result) => {
