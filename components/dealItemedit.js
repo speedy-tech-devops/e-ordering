@@ -66,6 +66,7 @@ const DealItemEdit = (props) => {
     };
     const removeConut = (index,dealItem) => {
         // router.push('/')
+        dataContext.setLoading(true)
         let price = dataContext.transitions?.products[index]
         const sum = price.options_detail.reduce((accumulator, object) => {
             return accumulator + object.price;
@@ -78,6 +79,7 @@ const DealItemEdit = (props) => {
             },
             products : dataContext.transitions.products
         }))
+        dataContext.setLoading(false)
     }
     return (
         <>
@@ -132,7 +134,7 @@ const DealItemEdit = (props) => {
                        </div>
                        <div className="group_btn_confirm">
                             <div className="btn btn_false" onClick={() => {setShowReject(false)}}>ยกเลิก</div>
-                            <div className="btn btn_true" onClick={() => {removeConut(props.index,props.dealItem)}}>ยืนยัน</div>
+                            <div className="btn btn_true" onClick={() => {!dataContext.loading && removeConut(props.index,props.dealItem)}}>ยืนยัน</div>
                        </div>
                     </div>
                 </Modal.Body>

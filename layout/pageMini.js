@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import Router ,{useRouter}from 'next/router'
 import en from '@/locales/en'
 import th from '@/locales/th'
+import { useAuth } from '@/context/useAuth';
 const Pagemini = (props) =>{
     const router = useRouter()
     const { locale } = router
@@ -14,6 +15,7 @@ const Pagemini = (props) =>{
     const[state,setState] = useState({
         loading : false
     })
+    let dataContext = useAuth()
     const Spinner = () => {
         const content = <div className="loading-pages">
             {/* <svg
@@ -82,6 +84,7 @@ const Pagemini = (props) =>{
             setState({ isLoading: false });
           });
     },[]);
+    console.log(dataContext.loading)
     return (
         <>
             <NextSeo
@@ -97,13 +100,13 @@ const Pagemini = (props) =>{
                 }}
             />
             
-            {state.isLoading ? Spinner() : ''}
+            {state.isLoading || dataContext.loading ? Spinner() : ''}
             <div className='group_back mini'>
 
-                {props.isDetail == undefined && <i className="fal fa-arrow-left" onClick={()=> {!props.onBack && props.onBack == undefined ? router.back() : router.push("/")}}></i>}
+                {props.isDetail == undefined && <i className="fal fa-arrow-left" onClick={()=> {!props.onBack && props.onBack == undefined ? router.push("/") : router.push("/")}}></i>}
                 <div className="titlePagename">{props.title}</div>
             </div>
-            <motion.div className={(state.isLoading ? 'loadingBlur height-100 pagemini' : 'pagemini')} initial="initial" animate="animate" exit={{ opacity: 0 }}>
+            <motion.div className={(state.isLoading || dataContext.loading ? 'loadingBlur height-100 pagemini' : 'pagemini')} initial="initial" animate="animate" exit={{ opacity: 0 }}>
                 {props.children}
             </motion.div>
         </>

@@ -27,6 +27,7 @@ const Cart = (props) => {
         
     }
     const onTransactions = async () =>{
+        dataContext.setLoading(true)
         let data = await addTransactions(dataContext.transitions).then((res) => {
             if(res?.code == 200){
                 dataContext.setTransitions({
@@ -50,6 +51,7 @@ const Cart = (props) => {
                     timer: 1000,
                     confirmButtonText: 'ปิด',
                 }).then((result) => {
+                    dataContext.setLoading(false)
                     /* Read more about isConfirmed, isDenied below */
                     
                 })
@@ -60,6 +62,7 @@ const Cart = (props) => {
                     icon: 'error',
                     confirmButtonText: 'Close'
                 })
+                dataContext.setLoading(false)
             }
             
         }).catch((error) => {
@@ -69,6 +72,7 @@ const Cart = (props) => {
                 icon: 'error',
                 confirmButtonText: 'Close'
             })
+            dataContext.setLoading(false)
         })
     }
     
@@ -114,7 +118,7 @@ const Cart = (props) => {
                        </div>
                        <div className="group_btn_confirm">
                             <div className="btn btn_false" onClick={()=> setShowConfirm(false)}>ยกเลิก</div>
-                            <div className="btn btn_true" onClick={() => onTransactions()}>ยืนยัน</div>
+                            <div className="btn btn_true" onClick={() => {!dataContext.loading && onTransactions()}}>ยืนยัน</div>
                        </div>
                     </div>
                 </Modal.Body>

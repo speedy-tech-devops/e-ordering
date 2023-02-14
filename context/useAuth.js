@@ -105,7 +105,7 @@ export const AuthProvider = ({ children }) => {
             setLoading(false)
         }
         loadUserFromCookies()
-    }, [emp])
+    }, [])
     
     const scrolLWithUseRef = (e,i) => {
         setHeightCateory(e)
@@ -209,7 +209,7 @@ export const AuthProvider = ({ children }) => {
         }))
     }
     return (
-        <AuthContext.Provider value={{ isAuthenticated: !!user, user, login, loading, logout,products,setProducts,idCate,setIdCate,scrolLWithUseRef,setHeightCateory,heightCateory,transitions, setTransitions,slideIndex, setSlideIndex , updateCount, setUpdateCount ,addToOrder , editToOrder ,dataSearch,setDataSearch,emp,setEmp,showConfirm,setShowConfirm   }}>
+        <AuthContext.Provider value={{ isAuthenticated: !!user, user, login, loading, setLoading, logout,products,setProducts,idCate,setIdCate,scrolLWithUseRef,setHeightCateory,heightCateory,transitions, setTransitions,slideIndex, setSlideIndex , updateCount, setUpdateCount ,addToOrder , editToOrder ,dataSearch,setDataSearch,emp,setEmp,showConfirm,setShowConfirm   }}>
             {children}
         </AuthContext.Provider>
     )

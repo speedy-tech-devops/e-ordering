@@ -100,7 +100,7 @@ const Pages = (props) => {
     return (
         <div className={props.isDetail == true ? 'contentArea hidden' : 'contentArea'}>
             {/* {state.isLoading ? Spinner() : ''} */}
-            <motion.div className={(state.isLoading ? 'loadingBlur' : '')} initial="initial" animate="animate" exit={{ opacity: 0 }}>
+            <motion.div className={(state.isLoading || dataContext.loading ? 'loadingBlur' : '')} initial="initial" animate="animate" exit={{ opacity: 0 }}>
                 <Header setSearch={props.setSearch} />
                 <div className="contentArea_wrapper">
                     {props.children}
