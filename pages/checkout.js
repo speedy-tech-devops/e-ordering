@@ -73,7 +73,7 @@ const Checkout = (props) => {
             <div className={style.group_button_bottom}>
                <div className={style.group_vat}>
                 <div className={style.total_number_bill}>
-                        <div className={style.text_total}>รวมค่าอาหารทั้งหมด</div>
+                        <div className={style.text_total}>{t.EZ5004}</div>
                         <div className={style.text_total}>฿ {parseFloat(history.sub_total).toLocaleString(undefined,{'minimumFractionDigits':2,'maximumFractionDigits':2})}</div>
                     </div>
                     {dataContext?.user?.configs?.is_service_charge_enable && <div className={style.total_number_bill}>
@@ -81,11 +81,11 @@ const Checkout = (props) => {
                         <div className={style.text_total}>฿ {parseFloat(history.service_charge_amount).toLocaleString(undefined,{'minimumFractionDigits':2,'maximumFractionDigits':2})}</div>
                     </div>}
                     {dataContext?.user?.configs?.is_vat_enable && <div className={style.total_number_bill}>
-                        <div className={style.text_total}>VAT {history.vat_rate}% {!dataContext?.user?.configs?.is_vat_exclude ? t.excluding : t.including}</div>
+                        <div className={style.text_total}>{t.EZ5005} {history.vat_rate}% {!dataContext?.user?.configs?.is_vat_exclude ? t.excluding : t.including}</div>
                         <div className={style.text_total}>฿ {parseFloat(history.vat_amount).toLocaleString(undefined,{'minimumFractionDigits':2,'maximumFractionDigits':2})}</div>
                     </div>}
                     {<div className={[style.total_number_bill,style.group_total].join(' ')}>
-                        <div className={style.text_total}>รวมทั้งหมด</div>
+                        <div className={style.text_total}>{t.EZ5006}</div>
                         <div className={[style.text_total , style.price].join(' ')} style={{fontSize:"24px"}}>฿ {parseFloat(history.totol_amount).toLocaleString('en-US')}</div>
                     </div>}
                </div>
