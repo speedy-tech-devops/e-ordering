@@ -138,12 +138,12 @@ const DealItemEdit = (props) => {
                 <Modal.Body>
                     <div className='group-modal'>
                        <div className="title_name_modal">
-                            <div className="title_text">ยกเลิก</div>
-                            <p className="subtitle_text">คุณต้องการยกเลิก <b >{nameReject}</b> ใช่ไหม?</p>
+                            <div className="title_text">{t.EZ3004}</div>
+                            <p className="subtitle_text">{t.EZ3005} <b >{nameReject}</b> ?</p>
                        </div>
                        <div className="group_btn_confirm">
-                            <div className="btn btn_false" onClick={() => {setShowReject(false)}}>ยกเลิก</div>
-                            <div className="btn btn_true" onClick={() => {!dataContext.loading && removeConut(props.index,props.dealItem)}}>ยืนยัน</div>
+                            <div className="btn btn_false" onClick={() => {setShowReject(false)}}>{t.EZ3006}</div>
+                            <div className="btn btn_true" onClick={() => {!dataContext.loading && removeConut(props.index,props.dealItem)}}>{t.EZ3007}</div>
                        </div>
                     </div>
                 </Modal.Body>

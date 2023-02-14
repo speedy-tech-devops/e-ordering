@@ -169,8 +169,8 @@ useEffect(() => {
             dataContext.transitions.products.length != 0 && 
             <div className={style.group_button + ' p-3'}>
                 <button className={style.addToCart} onClick={() => checkOrder()}>
-                    <span>รายการที่สั่ง</span>
-                    <span>{dataContext.transitions.customer.total} รายการ</span>
+                    <span>{t.EZ1002}</span>
+                    <span>{dataContext.transitions.customer.total} {t.Item}</span>
                 </button>
             </div>
           }

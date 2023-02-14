@@ -4,6 +4,7 @@ import { getMe,getScanqr } from '@/services/auth'
 import {getProducts} from "@/services/getServices"
 import Router ,{ useRouter } from 'next/router';
 import { connect } from 'react-redux';
+import {io} from 'socket.io-client';
 const AuthContext = createContext({});
 export const AuthProvider = ({ children }) => {
     const router = useRouter()
@@ -25,7 +26,7 @@ export const AuthProvider = ({ children }) => {
         },
         products : []
     })
-    
+    // console.log("socket",socket.connected,socket)
     const [idCate,setIdCate ] = useState(null)
     const [emp,setEmp ] = useState(null)
     const [heightCateory,setHeightCateory ] = useState(0)

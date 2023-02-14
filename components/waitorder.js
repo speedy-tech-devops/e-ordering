@@ -33,12 +33,12 @@ const WaitOrder = (props) => {
                 <div className="group_no_item">
                     <div style={{textAlign : " center", fontSize : "24px" , lineHeight : "1.2"}}>
                         <img src="/images/wait.png"></img><br/><br/>
-                        กรุณารอสักครู่ <div class="snippet" data-title="dot-collision">
+                        {t.EZ4012} <div class="snippet" data-title="dot-collision">
                     <div className="stage">
                         <div className="dot-collision"></div>
                     </div>
                     </div><br/>
-                        <span style={{display : "block",color : "#777",fontSize : "22px"}}>พนักงานกำลังดำเนินการเช็ดบิลของคุณ</span>
+                        <span style={{display : "block",color : "#777",fontSize : "22px"}}>{t.EZ4013}</span>
                     </div>
                     
                 </div>

@@ -46,7 +46,7 @@ const Cart = (props) => {
                 router.push('/order')
                 Swal.fire({
                     icon: 'success',
-                    title: 'ส่งรายการอาหารเรียบร้อยแล้ว',
+                    title: t.EZ3012,
                     showConfirmButton: false,
                     timer: 1000,
                     confirmButtonText: 'ปิด',
@@ -57,8 +57,8 @@ const Cart = (props) => {
                 })
             }else{
                 Swal.fire({
-                    title: 'Error!',
-                    text: 'Do you want to continue',
+                    title: t.EZ3013,
+                    text: t.EZ3014,
                     icon: 'error',
                     confirmButtonText: 'Close'
                 })
@@ -81,7 +81,7 @@ const Cart = (props) => {
         setDataItems(data)
     }
     return (
-        <Pagemini  title={'รายการที่สั่ง'}>
+        <Pagemini  title={t.EZ3001}>
             
             <div className="container_deal">
                 {
@@ -90,8 +90,8 @@ const Cart = (props) => {
                     }) : <div className="group_no_item">
                         <div style={{textAlign : " center", fontSize : "24px" , lineHeight : "1.2"}}>
                             <img src="/images/notfound.png"></img><br/><br/>
-                            ไม่พบรายการ<br/>
-                            <span style={{display : "block",color : "#777",fontSize : "22px"}}>ยังไม่มีรายการที่สั่งเข้ามา</span>
+                            {t.EZ3015}<br/>
+                            <span style={{display : "block",color : "#777",fontSize : "22px"}}>{t.EZ3016}</span>
                         </div>
                         
                     </div>
@@ -99,11 +99,11 @@ const Cart = (props) => {
             </div>
             <div className={style.group_button_bottom}>
                 <div className={style.group_total}>
-                    <div className={style.titletotal}>รวมค่าอาหาร</div>
+                    <div className={style.titletotal}>{t.EZ3002}</div>
                     <div className={style.price}>฿ {dataContext?.transitions.customer.priceTotal.toLocaleString('en-US')}</div>
                 </div>
                 <div className={style.group_addtocart}>
-                    <div className={[style.btn_addtocart,dataContext?.transitions.products.length == 0 && style.disabled].join(' ')}  onClick={()=> onClickAddOrder()}>ส่งรายการ</div>
+                    <div className={[style.btn_addtocart,dataContext?.transitions.products.length == 0 && style.disabled].join(' ')}  onClick={()=> onClickAddOrder()}>{t.EZ3003}</div>
                 </div>
            </div>
            
@@ -113,12 +113,12 @@ const Cart = (props) => {
                 <Modal.Body>
                     <div className='group-modal'>
                        <div className="title_name_modal">
-                            <div className="title_text">ยืนยันรายการ</div>
-                            <p className="subtitle_text">คุณต้องการส่งรายการอาหารนี้ใช่หรือไม่</p>
+                            <div className="title_text">{t.EZ3008}</div>
+                            <p className="subtitle_text">{t.EZ3009}</p>
                        </div>
                        <div className="group_btn_confirm">
-                            <div className="btn btn_false" onClick={()=> setShowConfirm(false)}>ยกเลิก</div>
-                            <div className="btn btn_true" onClick={() => {!dataContext.loading && onTransactions()}}>ยืนยัน</div>
+                            <div className="btn btn_false" onClick={()=> setShowConfirm(false)}>{t.EZ3010}</div>
+                            <div className="btn btn_true" onClick={() => {!dataContext.loading && onTransactions()}}>{t.EZ3011}</div>
                        </div>
                     </div>
                 </Modal.Body>

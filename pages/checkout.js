@@ -35,7 +35,7 @@ const Checkout = (props) => {
         setShowConfirm(true)
     }
     return (
-        <Pagemini  isDetail={'ชำระเงิน'} title={"ชำระเงิน"}>
+        <Pagemini  isDetail={t.EZ5001} title={t.EZ5001}>
             {/* <div className={style.number_bill}>
                 หมายเลขบิล: <span>{history[0]?.order_booking}</span>
             </div> */}
@@ -49,7 +49,7 @@ const Checkout = (props) => {
                                 <>
                                 <div className={style.order_all_time_bill}>
                                     <div className={style.order_time_bill}>
-                                    <span style={{paddingTop:"2px"}}>บิลที่ {item.order_no}</span>
+                                    <span style={{paddingTop:"2px"}}>{t.EZ5002} {item.order_no}</span>
                                         <span>{moment(item.created_at).format('LT')}</span>
                                     </div>
                                     {
@@ -58,7 +58,7 @@ const Checkout = (props) => {
                                         })
                                     }
                                     <div className={style.total_number_bill}>
-                                        <span className={style.text_total}>รวมค่าอาหาร:</span> <span className={style.price}>฿ {item.total_amount.toLocaleString('en-US')}</span>
+                                        <span className={style.text_total}>{t.EZ5003}:</span> <span className={style.price}>฿ {item.total_amount.toLocaleString('en-US')}</span>
                                     </div>
                                 </div>
                                 <br/>

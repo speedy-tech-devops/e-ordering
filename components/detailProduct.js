@@ -208,7 +208,7 @@ const DetailProduct = (props) => {
                                 return (
                                     <Accordion.Item eventKey={i}>
                                         <Accordion.Header>
-                                            <p className={style.subMenu}> {attr.attribute.choice_min > 0  && <span style={{color: "red",fontSize : '20px'}}>* </span>}{attr?.attribute?.name[locale] ? attr.attribute.name[locale] : attr.attribute.name["th"]} <br/> {attr.attribute.choice_min != 0 && <span style={{display : "inline-block"}}>{t.Selectatleast} {attr.attribute.choice_min} {t.Item}</span>} {attr.attribute.choice_limit >= 0 && <span style={{display : "inline-block"}}>{t.Selectatleastmin} {attr.attribute.choice_limit} {t.Item}</span>}</p>
+                                            <p className={style.subMenu}> {attr.attribute.choice_min > 0  && <span style={{color: "red",fontSize : '20px'}}>* </span>}{attr?.attribute?.name[locale] ? attr.attribute.name[locale] : attr.attribute.name["th"]} <br/> {attr.attribute.choice_min != 0 && <span style={{display : "inline-block"}}>{t.EZ2001} {attr.attribute.choice_min} {t.Item}</span>} {attr.attribute.choice_limit >= 0 && <span style={{display : "inline-block"}}>{t.EZ2002} {attr.attribute.choice_limit} {t.Item}</span>}</p>
                                         </Accordion.Header>
                                         <Accordion.Body>
                                             {
@@ -261,8 +261,8 @@ const DetailProduct = (props) => {
 
                     <div className={style.note}>
                         <div className="form-group">
-                            <label className="mb-2" htmlFor="note">Additional info</label>
-                            <textarea className="form-control" id="note" rows={3} placeholder={t.additional} defaultValue={""} onChange={(e) => {onChangeNoteOrder(e)}} />
+                            <label className="mb-2" htmlFor="note">{t.EZ2003}</label>
+                            <textarea className="form-control" id="note" rows={3} placeholder={t.EZ2004} defaultValue={""} onChange={(e) => {onChangeNoteOrder(e)}} />
                         </div>
                     </div>
                     <div className={style.countNumber}>
@@ -277,7 +277,7 @@ const DetailProduct = (props) => {
                         }
                         }}>
                         <button className={style.addToCart +' addToCart'} disabled={enabled}>
-                            <span>Add to cart</span>
+                            <span>{t.EZ2005}</span>
                             <span>{dataItem?.sale_price != 0 && dataItem?.sale_price ? <>
                                   {totalPrice.toLocaleString('en-US')} ฿
                                 </> : totalPrice.toLocaleString('en-US') + " ฿"}</span>

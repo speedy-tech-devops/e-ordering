@@ -114,7 +114,7 @@ const Header = (props) => {
                     {isSearchBar == true ?
                         <div className={style.searchBar}>
                             <div className={style.icon + ' icon_search'} />
-                            <input type={'text'} placeholder={'Search menu'} onChange={(e) => onChangeFunc(e)} />
+                            <input type={'text'} placeholder={t.EZ1004} onChange={(e) => onChangeFunc(e)} />
                             <div className={style.icon_close } onClick={(e) => {
                                 setSearchBar(false)
                                 props.setSearch('')

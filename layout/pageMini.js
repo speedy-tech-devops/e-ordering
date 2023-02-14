@@ -84,7 +84,6 @@ const Pagemini = (props) =>{
             setState({ isLoading: false });
           });
     },[]);
-    console.log(dataContext.loading)
     return (
         <>
             <NextSeo
