@@ -73,10 +73,10 @@ const DealItemEdit = (props) => {
         }, 0);
         
         let remove = dataContext.transitions.products.splice(index, 1);
-        const qtys = remove.reduce((accumulator, object) => {
+        const qtys = dataContext.transitions.products.reduce((accumulator, object) => {
             return accumulator + object.qty;
         }, 0);
-        console.log(qtys)
+        console.log(remove)
         dataContext.setTransitions((prev) => ({
             customer : {
                 ...prev.customer,
@@ -101,6 +101,7 @@ const DealItemEdit = (props) => {
                     {props.dealItem.note}
                     
                 </div>
+                
                 {props.dealItem.options_detail.map((addOn,i) =>{
                          return  (
                             <>

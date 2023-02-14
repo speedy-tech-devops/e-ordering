@@ -185,7 +185,7 @@ const DetailProduct = (props) => {
                     <div className={style.nameProduct}>
                         <div className={style.row}>
                             <h1>{dataItem?.name[locale] ? dataItem.name[locale] : dataItem.name["th"]}</h1>
-                            <h1 style={{ width: "100px",textAlign:'right' }}>{dataItem?.sale_price != 0 && dataItem?.sale_price ? <>
+                            <h1 style={{textAlign:'right',flexShrink : 0 }}>{dataItem?.sale_price != 0 && dataItem?.sale_price ? <>
                                 <span>
                                   {dataItem.sale_price.toLocaleString('en-US')} ฿
                                 </span>
