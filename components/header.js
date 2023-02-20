@@ -81,7 +81,7 @@ const Header = (props) => {
                                 body.classList.add("lockPage")}}></img>
                         </div>
                         <div className={style.lang_change}>
-                        <img src="/images/History.svg" width={25}  onClick={() => {router.push('/order')}}></img>
+                        <img src="/images/History.svg" width={25}  onClick={() => {router.push('/history')}}></img>
                         </div>
                         {
                             router.locale == "th" ? 

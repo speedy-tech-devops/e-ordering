@@ -1,8 +1,8 @@
 import axios from "axios";
 import { baseURL } from "@/services/endpoint"
-import Cookies from 'js-cookie'
+// import Cookies from 'js-cookie'
 export const getScanqr = async (qrText) => {
-    const token = Cookies.get('token')
+    // const token = Cookies.get('token')
     try {
       var data = {
         'qr_code': qrText
