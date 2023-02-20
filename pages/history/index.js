@@ -7,7 +7,7 @@ import th from '@/locales/th'
 import DealItemOrder from "@/components/dealItemorder";
 import style from "@/styles/DealItemOrder.module.scss"
 import { Modal } from 'react-bootstrap';
-import { getHistory } from "@/services/getServices";
+// import { getHistory } from "@/services/getServices";
 import { motion, AnimatePresence } from "framer-motion"
 import { useAuth } from '@/context/useAuth'
 import moment from 'moment';
@@ -27,30 +27,21 @@ const History = () => {
     const [showConfirm, setShowConfirm] = useState(false)
     const [history, setHistory] = useState([])
     const dataContext = useAuth()
-    const [total, setTotal] = useState(0)
+    // const [total, setTotal] = useState(0)
     const [isDetail, setDetail] = useState(false)
 
-    // useEffect(() => {
-    //     function handleEvent(payload) {
-    //         setDetail(false)
-    //         router.push('/checkout')
-    //         socket.disconnect()
-    //     }
-    //     if (socket) {
-    //         socket.on('history-detail', handleEvent)
-    //     }
-    // }, [socket])
-
-
     useEffect(() => {
+        // socket.connect();
         if (socket) {
             socket.emit("subscribe-history")
             socket.on('history-live', (res) => {
                 setHistory(res)
             });
+        }
 
-
-        };
+        if (!socket.connected) {
+            socket.connect();
+        }
 
         return () => {
             socket.off('subscribe-history');
