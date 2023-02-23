@@ -76,7 +76,6 @@ const DealItemEdit = (props) => {
         const qtys = dataContext.transitions.products.reduce((accumulator, object) => {
             return accumulator + object.qty;
         }, 0);
-        console.log(remove)
         dataContext.setTransitions((prev) => ({
             customer : {
                 ...prev.customer,
