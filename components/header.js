@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react'
 import style from '@/styles/header.module.scss'
 import Image from 'next/legacy/image'
-import Scroll ,{ Link, animateScroll as scroll } from "react-scroll";
+import Scroll, { Link, animateScroll as scroll } from "react-scroll";
 
 import { useAuth } from '@/context/useAuth'
 import { useRouter } from 'next/router'
@@ -32,18 +32,18 @@ const Header = (props) => {
         }
         ,
         beforeChange: (current, next) => data.setSlideIndex(next)
-      };
+    };
     const onChangeFunc = (e) => {
         const { name, value } = e.target
         let array = []
         let dataSearch = data.products.map((e) => e.menus)
         let datas = array.concat(...dataSearch).filter((item) => {
-            if(item.name[locale] != null){
+            if (item.name[locale] != null) {
                 return item.name[locale].toLowerCase().match(value.toLowerCase())
-            }else{
+            } else {
                 return item.name["th"].toLowerCase().match(value.toLowerCase())
             }
-            
+
         })
         props.setSearch(value)
         data.setDataSearch(datas)
@@ -59,15 +59,15 @@ const Header = (props) => {
             Events.scrollEvent.remove('begin');
             Events.scrollEvent.remove('end');
         }
-        
-      }, [data.heightCateory]);
+
+    }, [data.heightCateory]);
     const handleRoute = (locale) => router.push(`${locale}${router.asPath}`, `${locale}${router.asPath}`, { locale: false })
     return (
         <>
             <header className={style.header}>
                 <div className={style.topbar_menu}>
                     <div className={style.logo}>
-                        <Image src={ !data?.user?.logo_image ? '/images/logo.png' : data?.user?.logo_image} width={36} height={36} alt="logo"></Image>
+                        <Image src={!data?.user?.logo_image ? '/images/logo.png' : data?.user?.logo_image} width={36} height={36} alt="logo"></Image>
                     </div>
                     <div className={style.group_shop}>
                         <div className={style.name}>{data?.user?.shop_name[locale] ? data?.user?.shop_name[locale] : data?.user?.shop_name['th']}</div>
@@ -78,22 +78,23 @@ const Header = (props) => {
                             <img src="/images/Ring.svg" width={25} onClick={() => {
                                 data.setEmp(true)
                                 var body = document.body;
-                                body.classList.add("lockPage")}}></img>
+                                body.classList.add("lockPage")
+                            }}></img>
                         </div>
                         <div className={style.lang_change}>
-                        <img src="/images/History.svg" width={25}  onClick={() => {router.push('/history')}}></img>
+                            <img src="/images/History.svg" width={25} onClick={() => { router.push('/history') }}></img>
                         </div>
                         {
-                            router.locale == "th" ? 
-                            <div className={style.lang_change} style={{position : "relative" , top : "2px"}} onClick={() => handleRoute("en")}>
-                                <img src="/images/thai.png" width={20}></img>
-                            </div> 
-                            : 
-                            <div className={style.lang_change}>
-                                <img src="/images/eng.png" width={20}  onClick={() => handleRoute("th")}></img>
-                            </div>
+                            router.locale == "th" ?
+                                <div className={style.lang_change} style={{ position: "relative", top: "2px" }} onClick={() => handleRoute("en")}>
+                                    <img src="/images/thai.png" width={20}></img>
+                                </div>
+                                :
+                                <div className={style.lang_change}>
+                                    <img src="/images/eng.png" width={20} onClick={() => handleRoute("th")}></img>
+                                </div>
                         }
-                        
+
                     </div>
                 </div>
                 {/* <div className={style.appName}>
@@ -110,36 +111,36 @@ const Header = (props) => {
                         <div className={style.searchBar}>
                             <div className={style.icon + ' icon_search'} />
                             <input type={'text'} placeholder={t.EZ1004} onChange={(e) => onChangeFunc(e)} />
-                            <div className={style.icon_close } onClick={(e) => {
+                            <div className={style.icon_close} onClick={(e) => {
                                 setSearchBar(false)
                                 props.setSearch('')
-                                }}>✕</div>
+                            }}>✕</div>
                         </div>
                         :
                         <div className={style.navBar + ' navBar'}>
                             <div className={style.icon + ' icon_search'} onClick={(e) => setSearchBar(true)} />
                             <div className={style.groupNav}>
                                 <Slider {...settings} ref={sliderRef}>
-                                {
-                                    data?.products && data.products.map((item,i) =>{
-                                        return <Link className={style.navItem + ` ${data.heightCateory == i && " active"}`} to={`sec_${i}`} spy={true}
-                                        smooth={true}
-                                        hashSpy={true}
-                                        offset={0}
-                                        duration={50}
-                                        isDynamic={false}
-                                        ignoreCancelEvents={false}
-                                         onSetActive={(e) => {
-                                            data.scrolLWithUseRef(i,e)
-                                        }}
-                                          onClick={(e) => {
-                                            sliderRef.current.slickGoTo(i)
-                                        }} >
-                                        <span>{item?.category_name[locale] ? item?.category_name[locale] : item?.category_name["th"]}</span>
-                                    </Link>
-                                    }) 
-                                }
-                                {/* {
+                                    {
+                                        data?.products && data.products.map((item, i) => {
+                                            return <Link className={style.navItem + ` ${data.heightCateory == i && " active"}`} to={`sec_${i}`} spy={true}
+                                                smooth={true}
+                                                hashSpy={true}
+                                                offset={0}
+                                                duration={50}
+                                                isDynamic={false}
+                                                ignoreCancelEvents={false}
+                                                onSetActive={(e) => {
+                                                    data.scrolLWithUseRef(i, e)
+                                                }}
+                                                onClick={(e) => {
+                                                    sliderRef.current.slickGoTo(i)
+                                                }} >
+                                                <span>{item?.category_name[locale] ? item?.category_name[locale] : item?.category_name["th"]}</span>
+                                            </Link>
+                                        })
+                                    }
+                                    {/* {
                                     data?.products && data.products.map((item,i) =>{
                                         return <div onClick={(e) => {
                                             sliders.slickGoTo(i)
@@ -172,32 +173,32 @@ const Header = (props) => {
                     }
                 </div>}
             </header>
-            <Modal key={1} show={data.showConfirm} onHide={()=> data.setShowConfirm(false)} size="sm"
-                    aria-labelledby="contained-modal-title-vcenter"
-                    centered>
-                    <Modal.Body>
-                        <div className='group-modal'>
+            <Modal key={1} show={data.showConfirm} onHide={() => data.setShowConfirm(false)} size="sm"
+                aria-labelledby="contained-modal-title-vcenter"
+                centered>
+                <Modal.Body>
+                    <div className='group-modal'>
                         <div className="title_name_modal">
-                                <div className="title_text">{t.EZ1005}</div>
-                                <p className="subtitle_text">{t.EZ1007}</p>
+                            <div className="title_text">{t.EZ1005}</div>
+                            <p className="subtitle_text">{t.EZ1007}</p>
                         </div>
                         <div className="group_btn_confirm">
-                                <div className="btn btn_false" onClick={()=> data.setShowConfirm(false)}>{t.EZ3010}</div>
-                                <div className="btn btn_true" onClick={() => {
-                                    data.setShowConfirm(false)
-                                    Swal.fire({
-                                        icon: 'success',
-                                        title: t.EZ1008,
-                                        text: t.EZ1009,
-                                        showConfirmButton: false,
-                                        confirmButtonText: 'Close',
-                                    }).then((result) => {
-                                        /* Read more about isConfirmed, isDenied below */
-                                        router.push('/')
-                                    })
-                                }}>{t.EZ3011}</div>
+                            <div className="btn btn_false" onClick={() => data.setShowConfirm(false)}>{t.EZ3010}</div>
+                            <div className="btn btn_true" onClick={() => {
+                                data.setShowConfirm(false)
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: t.EZ1008,
+                                    text: t.EZ1009,
+                                    showConfirmButton: false,
+                                    confirmButtonText: 'Close',
+                                }).then((result) => {
+                                    /* Read more about isConfirmed, isDenied below */
+                                    router.push('/')
+                                })
+                            }}>{t.EZ3011}</div>
                         </div>
-                        </div>
+                    </div>
                 </Modal.Body>
             </Modal>
         </>

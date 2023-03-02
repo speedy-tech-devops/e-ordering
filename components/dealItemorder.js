@@ -17,7 +17,7 @@ const DealItemOrder = (props) => {
                 <Image src={dealItem?.product?.image_url ? dealItem?.product?.image_url : "/images/blur.png"} width={70} height={70} alt="ss"></Image>
             </div>
             <div className={style.group_dealitem}>
-                <div className={style.deal_name}><span className={style.nameOrder}>{dealItem?.product?.name[locale] ? dealItem.product.name[locale] : dealItem.product.name["th"]}</span> <span className={style.priceOrder}>฿ {(dealItem.unit_price + dealItem.option_amount).toLocaleString('en-US')} x {dealItem.qty}</span></div>
+                <div className={style.deal_name}><span className={style.nameOrder}>{dealItem?.product?.name[locale] ? dealItem.product.name[locale] : dealItem.product.name["th"]}</span> <span className={style.priceOrder}>฿ {(dealItem.total_unit_price).toLocaleString('en-US')} x {dealItem.qty}</span></div>
                 <div className={style.deal_detail}>{
                     dealItem.options.map((opt, i) => {
                         return (
