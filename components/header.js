@@ -1,8 +1,7 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import style from '@/styles/header.module.scss'
 import Image from 'next/legacy/image'
 import Scroll, { Link, animateScroll as scroll } from "react-scroll";
-
 import { useAuth } from '@/context/useAuth'
 import { useRouter } from 'next/router'
 import en from '@/locales/en'
@@ -29,8 +28,7 @@ const Header = (props) => {
         variableWidth: true,
         afterChange: () => {
             data.setSlideIndex((prev) => (prev + 1))
-        }
-        ,
+        },
         beforeChange: (current, next) => data.setSlideIndex(next)
     };
     const onChangeFunc = (e) => {
@@ -48,10 +46,7 @@ const Header = (props) => {
         props.setSearch(value)
         data.setDataSearch(datas)
     }
-    const backBtn = (e) => {
-        setSearchBar(false)
-        props.setSearch('')
-    }
+
     useEffect(() => {
         sliderRef?.current?.slickGoTo(data.heightCateory)
         scrollSpy.update();
@@ -62,6 +57,7 @@ const Header = (props) => {
 
     }, [data.heightCateory]);
     const handleRoute = (locale) => router.push(`${locale}${router.asPath}`, `${locale}${router.asPath}`, { locale: false })
+
     return (
         <>
             <header className={style.header}>
@@ -202,7 +198,6 @@ const Header = (props) => {
                 </Modal.Body>
             </Modal>
         </>
-
     )
 }
 export default Header

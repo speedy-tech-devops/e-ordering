@@ -35,6 +35,7 @@ const History = () => {
         if (socket) {
             socket.emit("subscribe-history")
             socket.on('history-live', (res) => {
+                console.log(res);
                 setHistory(res)
             });
         }

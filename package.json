@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "cross-env NEXT_PUBLIC_API=http://localhost:3000 next dev ",
+    "dev": "cross-env NEXT_PUBLIC_API=http://localhost:3000 next dev -p 3002 ",
     "build": "cross-env NEXT_PUBLIC_API=https://d-api.speedy-tech.co next build",
     "start": "cross-env NEXT_PUBLIC_API=https://d-api.speedy-tech.co next start",
     "lint": "next lint"
